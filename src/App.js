@@ -1,9 +1,12 @@
 
-import { Component, useEffect } from 'react';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Admin from './layout/Admin';
 import Login from './pages/Login/Login';
+import LoginCallback from './pages/Login/LoginCallback';
+import Logout from './pages/Login/Logout';
+
+import './style.css';
 
 function App() {
   const resourceUrl = '/assets/js/app.min.js';
@@ -19,13 +22,19 @@ function App() {
   return (
     <Router>
       <Switch>
-          <Route exact path="/">
-            <Admin></Admin>
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/login-callback">
+          <LoginCallback />
+        </Route>
+        <Route path="/logout">
+          <Logout />
+        </Route>
+        <Route path="/">
+          <Admin></Admin>
+        </Route>
+      </Switch>
     </Router>
 
   );

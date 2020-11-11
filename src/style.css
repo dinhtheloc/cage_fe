@@ -1,0 +1,123 @@
+.ribbon-box .color-rank-iron span {
+    background-color: #3b3b3b !important;
+}
+.ribbon-box .color-rank-iron span:before {
+    border-left: 3px solid #3b3b3b;
+    border-top: 3px solid #3b3b3b;
+}
+
+.ribbon-box .color-rank-iron span:after {
+    border-right: 3px solid #3b3b3b;
+    border-top: 3px solid #3b3b3b;
+}
+
+.ribbon-box .color-rank-bronze span {
+    background-color: #755103 !important;
+}
+.ribbon-box .color-rank-bronze span:before {
+    border-left: 3px solid #755103;
+    border-top: 3px solid #755103;
+}
+
+.ribbon-box .color-rank-bronze span:after {
+    border-right: 3px solid #755103;
+    border-top: 3px solid #755103;
+}
+
+/* 
+. {
+    background-color: #cdd3d1 !important;
+    color: #3b3b3b !important;
+} */
+
+
+.ribbon-box .color-rank-silver span {
+    background-color: #cdd3d1 !important;
+}
+
+.ribbon-box .color-rank-silver span:before {
+    border-left: 3px solid #cdd3d1;
+    border-top: 3px solid #cdd3d1;
+}
+
+.ribbon-box .color-rank-silver span:after {
+    border-right: 3px solid #cdd3d1;
+    border-top: 3px solid #cdd3d1;
+}
+
+
+.ribbon-box .color-rank-gold span {
+    background-color: #edc44a !important;
+}
+
+.ribbon-box .color-rank-gold span:before {
+    border-left: 3px solid #edc44a;
+    border-top: 3px solid #edc44a;
+}
+
+.ribbon-box .color-rank-gold span:after {
+    border-right: 3px solid #edc44a;
+    border-top: 3px solid #edc44a;
+}
+
+.ribbon-box .color-rank-platinum span {
+    background-color: #3aa6af !important;
+}
+
+.ribbon-box .color-rank-platinum span:before {
+    border-left: 3px solid #3aa6af;
+    border-top: 3px solid #3aa6af;
+}
+
+.ribbon-box .color-rank-platinum span:after {
+    border-right: 3px solid #3aa6af;
+    border-top: 3px solid #3aa6af;
+}
+
+
+
+
+.ribbon-box .color-rank-diamond span {
+    background-color: #c685f9 !important;
+}
+
+.ribbon-box .color-rank-diamond span:before {
+    border-left: 3px solid #c685f9;
+    border-top: 3px solid #c685f9;
+}
+
+.ribbon-box .color-rank-diamond span:after {
+    border-right: 3px solid #c685f9;
+    border-top: 3px solid #c685f9;
+}
+
+
+
+.ribbon-box .color-rank-immortal span {
+    background-color: #b03d6c !important;
+}
+
+.ribbon-box .color-rank-immortal span:before {
+    border-left: 3px solid #b03d6c;
+    border-top: 3px solid #b03d6c;
+}
+
+.ribbon-box .color-rank-immortal span:after {
+    border-right: 3px solid #b03d6c;
+    border-top: 3px solid #b03d6c;
+}
+
+
+.ribbon-box .color-rank-radiant span {
+    background-color: #fdf0a1 !important;
+}
+
+.ribbon-box .color-rank-radiant span:before {
+    border-left: 3px solid #fdf0a1;
+    border-top: 3px solid #fdf0a1;
+}
+
+.ribbon-box .color-rank-radiant span:after {
+    border-right: 3px solid #fdf0a1;
+    border-top: 3px solid #fdf0a1;
+}

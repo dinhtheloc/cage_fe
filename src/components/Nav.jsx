@@ -1,4 +1,7 @@
-import React from 'react'
+import React from "react";
+import {
+    Link
+} from "react-router-dom";
 
 export default function Nav() {
     return (
@@ -15,37 +18,28 @@ export default function Nav() {
             {/* - Sidemenu */}
             <ul className="metismenu side-nav">
 
-                <li className="side-nav-title side-nav-item">Navigation</li>
-
+                <li className="side-nav-title side-nav-item">Danh mục</li>
+                
                 <li className="side-nav-item">
-                    <a href="javascript: void(0);" className="side-nav-link">
-                        <i className="uil-home-alt"></i>
-                        <span className="badge badge-success float-right">4</span>
-                        <span> Dashboards </span>
-                    </a>
-                    <ul className="side-nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="dashboard-analytics.html">Analytics</a>
-                        </li>
-                        <li>
-                            <a href="dashboard-crm.html">CRM</a>
-                        </li>
-                        <li>
-                            <a href="/saas/">Ecommerce</a>
-                        </li>
-                        <li>
-                            <a href="dashboard-projects.html">Projects</a>
-                        </li>
-                    </ul>
+                    <Link to="/" className="side-nav-link">
+                        <i className="uil-rss"></i>
+                        <span class="badge badge-success float-right">New</span>
+                        <span> Tìm kiếm đồng đội </span>
+                    </Link>
                 </li>
 
-                <li className="side-nav-title side-nav-item">Apps</li>
+                <li className="side-nav-item">
+                    <Link to="/" className="side-nav-link">
+                        <i className="uil-user"></i>
+                        <span> Hồ sơ cá nhân </span>
+                    </Link>
+                </li>
 
                 <li className="side-nav-item">
-                    <a href="apps-calendar.html" className="side-nav-link">
-                        <i className="uil-calender"></i>
-                        <span> Calendar </span>
-                    </a>
+                    <Link to="/logout" className="side-nav-link">
+                        <i className="uil-power"></i>
+                        <span> Đăng xuất hệ thống </span>
+                    </Link>
                 </li>
 
 
