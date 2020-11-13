@@ -4,17 +4,15 @@ import userApi from '../../api/userApi';
 
 
 export default function ProfilePage() {
-    const { register, handleSubmit, errors, reset } = useForm();
-    const submit = data => {
-        console.log('data', data)
-    };
+
+    const userId = localStorage.getItem('userId');
 
     const [userProfile, setUserProfile] = useState([]);
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const userId = localStorage.getItem('userId');
-                const params = { id: userId};
+
+                const params = { id: userId };
                 const response = await userApi.getUserById(params);
                 setUserProfile(response);
                 reset({
@@ -23,7 +21,7 @@ export default function ProfilePage() {
                     valorant_id: response.valorant_id,
                     valorant_name: response.valorant_name,
                     gender: response.gender
-                })
+                });
             } catch (error) {
                 console.log('Failed to fetch product list: ', error);
             }
@@ -31,7 +29,15 @@ export default function ProfilePage() {
         fetchUserProfile();
     }, []);
 
-
+    const { register, handleSubmit, errors, reset } = useForm();
+    const submit = data => {
+        data.id = userId;
+        userApi.updateUserById(data).then((response) => {
+            window.$.NotificationApp.send("Yeah","Cập nhật thông tin thành công","top-right","rgba(0,0,0,0.2)", "success");
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
     return (
         <>
             <div className="row">
