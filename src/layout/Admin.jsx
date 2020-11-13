@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch } from 'react-router-dom';
+import userApi from '../api/userApi';
 import Nav from '../components/Nav';
 import PrivateRoute from '../components/PrivateRoute';
 import HomePage from '../pages/Home/HomePage';
 import ProfilePage from '../pages/Profile/ProfilePage';
 
 export default function Admin() {
-    // let { path, url } = useRouteMatch();
     return (
-
         <div className="container-fluid">
             {/*  Begin page */}
             <div className="wrapper">
@@ -38,9 +37,9 @@ export default function Admin() {
                               </div>
                                 <div className="col-md-6">
                                     <div className="text-md-right footer-links d-none d-md-block">
-                                        <a href="javascript: void(0);">About</a>
-                                        <a href="javascript: void(0);">Support</a>
-                                        <a href="javascript: void(0);">Contact Us</a>
+                                        <a href="#">About</a>
+                                        <a href="#">Support</a>
+                                        <a href="#">Contact Us</a>
                                     </div>
                                 </div>
                             </div>

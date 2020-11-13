@@ -5,7 +5,6 @@ import {
 
 export default function PrivateRoute({ children, ...rest }) {
     const token = localStorage.getItem('token');
-    console.log(token);
     return (
         <Route
             {...rest}

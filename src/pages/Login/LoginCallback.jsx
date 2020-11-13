@@ -1,5 +1,4 @@
-import React from 'react';
-import { useLocation, Redirect } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -8,9 +7,9 @@ function useQuery() {
 export default function LoginCallback() {
 
     const token = useQuery().get("token");
-    console.log(token);
+    const userId = useQuery().get("userId");
     localStorage.setItem('token', token);
-    return (
-        <Redirect to="/"></Redirect>
-    )
+    localStorage.setItem('userId', userId);
+    window.location.href = '/';
+    
 }
