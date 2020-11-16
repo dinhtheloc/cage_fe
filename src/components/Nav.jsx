@@ -10,10 +10,7 @@ export default function Nav() {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const userId = localStorage.getItem('userId');
-
-                const params = { id: userId};
-                const response = await userApi.getUserById(params);
+                const response = await userApi.getUserById();
                 setUserProfile(response);
             } catch (error) {
                 console.log('Failed to fetch product list: ', error);

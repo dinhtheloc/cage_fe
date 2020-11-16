@@ -6,9 +6,9 @@ class UserApi {
         return axiosClient.get(url, { params });
     };
 
-    getUserById = (params) => {
+    getUserById = () => {
         const url = '/getUserById';
-        return axiosClient.get(url, { params });
+        return axiosClient.get(url);
     };
 
     updateUserById = (data) => {

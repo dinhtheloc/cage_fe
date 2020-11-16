@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Switch } from 'react-router-dom';
-import userApi from '../api/userApi';
 import Nav from '../components/Nav';
 import PrivateRoute from '../components/PrivateRoute';
 import HomePage from '../pages/Home/HomePage';

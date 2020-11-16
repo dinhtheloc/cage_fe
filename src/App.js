@@ -5,8 +5,8 @@ import Admin from './layout/Admin';
 import Login from './pages/Login/Login';
 import LoginCallback from './pages/Login/LoginCallback';
 import Logout from './pages/Login/Logout';
-
 import './style.css';
+
 
 function App() {
   const resourceUrl = '/assets/js/app.min.js';
