@@ -1,4 +1,5 @@
 import React from 'react'
+import FormCreatePost from './FormCreatePost';
 
 export default function HomePage() {
     return (
@@ -16,6 +17,15 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
+
+            <button type="button"
+            data-toggle="modal" data-target="#staticBackdrop"
+            className="btn btn-primary mb-2"><i className="uil-plus"></i> Tạo bài viết</button>
+
+
+
+            <FormCreatePost></FormCreatePost>
+
             <div className="row">
                 <div className="col-sm-12 col-md-4">
                     <div className="card mb-0 mt-2 ribbon-box">
@@ -26,8 +36,18 @@ export default function HomePage() {
                                 <img className="d-flex mr-2 rounded-circle" src="https://coderthemes.com/hyper/saas/assets/images/users/avatar-2.jpg" alt="placeholder image" height="32" />
                                 <div className="media-body">
                                     <small className="float-right">3 phút trước</small>
-                                    <h6 className="m-0 font-14">Steven Smith</h6>
+                                    <h6 className="m-0 font-14">Steven Smith <i className="mdi mdi-gender-male"></i><i className="mdi mdi-gender-female"></i></h6>
                                     <small className="text-muted">caygheysamvuong #9921</small>
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col text-center">
+                                    <p>Tiêu đề: abc xyz</p>
+                                </div>
+
+                                <div className="col text-center">
+                                    <p>Cần tìm 3 slot</p>
                                 </div>
                             </div>
 

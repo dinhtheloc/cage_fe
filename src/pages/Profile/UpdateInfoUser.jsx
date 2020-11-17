@@ -31,7 +31,6 @@ export default function UpdateInfoUser({ fetchUserProfile, userProfile }) {
     
 
     return (
-        
         userProfile ? <form onSubmit={handleSubmit(submit)}>
             <div className="card">
                 <div className="card-body">
@@ -114,11 +113,8 @@ export default function UpdateInfoUser({ fetchUserProfile, userProfile }) {
                     <div className="text-center">
                         <button type="submit" className="btn btn-primary">Cập nhật hồ sơ</button>
                     </div>
-
                 </div>
             </div>
         </form> : <Loading />
-
-
     )
 }

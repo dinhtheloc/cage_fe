@@ -4,6 +4,7 @@ import Nav from '../components/Nav';
 import PrivateRoute from '../components/PrivateRoute';
 import HomePage from '../pages/Home/HomePage';
 import ProfilePage from '../pages/Profile/ProfilePage';
+import Chat from '../pages/Chat/Chat';
 
 export default function Admin() {
     return (
@@ -21,6 +22,9 @@ export default function Admin() {
                                     </PrivateRoute>
                                     <PrivateRoute path='/profile'>
                                         <ProfilePage></ProfilePage>
+                                    </PrivateRoute>
+                                    <PrivateRoute path='/chat'>
+                                        <Chat></Chat>
                                     </PrivateRoute>
                                 </Switch>
                             </div>

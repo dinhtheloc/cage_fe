@@ -66,7 +66,7 @@ export default function ProfilePage() {
                                         setTabIndex(1);
                                     }
                                 }}>
-                                    <i className="uil uil-user-square mr-1"></i>  {tabIndex === 1 ? 'Cập nhật thông tin tài khoản' : 'Cập nhật avatar'}
+                                    <i className="uil uil-user-square mr-1"></i>  {tabIndex === 0 ? 'Cập nhật thông tin tài khoản' : 'Cập nhật avatar'}
                                 </button>
                             </div>
                         </div>
