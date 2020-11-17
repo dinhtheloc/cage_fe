@@ -6,7 +6,7 @@ import userApi from '../api/userApi';
 
 export default function Nav() {
 
-    const [userProfile, setUserProfile] = useState([]);
+    const [userProfile, setUserProfile] = useState({});
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
@@ -23,7 +23,7 @@ export default function Nav() {
 
             <div className="leftbar-user">
                 <a href="#">
-                    <img src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.0-9/123140332_3445096828919085_1399768299663606821_n.jpg?_nc_cat=111&ccb=2&_nc_sid=09cbfe&_nc_ohc=DHLFMyF0Sw8AX95_dCB&_nc_ht=scontent.fsgn2-6.fna&oh=231f8a4bfea0491d3f2363c79e8ea1c5&oe=5FD1B452" alt="user-image" height="42" className="rounded-circle shadow-sm" />
+                    <img src={`${process.env.REACT_APP_UPLOAD_URL}/${userProfile.avatar}`} alt="user-image" height="42" className="rounded-circle shadow-sm" />
                     <span className="leftbar-user-name">{userProfile.name}</span>
                 </a>
             </div>
