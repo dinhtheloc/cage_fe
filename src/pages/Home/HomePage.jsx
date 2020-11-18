@@ -1,6 +1,8 @@
 import React from 'react'
 import FormCreatePost from './FormCreatePost';
 
+import CardPost from './CardPost';
+
 export default function HomePage() {
     return (
         <>
@@ -18,43 +20,35 @@ export default function HomePage() {
                 </div>
             </div>
 
+            <div
+                style={{ display: 'inline-block', verticalAlign: 'middle' }}
+                class="dropdown mb-2 mr-2">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i className="uil-signal-alt"></i> Lọc theo rank
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Tất cả</a>
+                    <a class="dropdown-item" href="#">Sắt</a>
+                    <a class="dropdown-item" href="#">Đồng</a>
+                    <a class="dropdown-item" href="#">Bạc</a>
+                    <a class="dropdown-item" href="#">Vàng</a>
+                    <a class="dropdown-item" href="#">Bạch kim</a>
+                    <a class="dropdown-item" href="#">Kim cương</a>
+                    <a class="dropdown-item" href="#">Immortal</a>
+                    <a class="dropdown-item" href="#">Radiant</a>
+                </div>
+            </div>
+
             <button type="button"
-            data-toggle="modal" data-target="#staticBackdrop"
-            className="btn btn-primary mb-2"><i className="uil-plus"></i> Tạo bài viết</button>
-
-
+                data-toggle="modal" data-target="#staticBackdrop"
+                className="btn btn-success mb-2"><i className="uil-plus"></i> Tạo bài viết</button>
 
             <FormCreatePost></FormCreatePost>
 
             <div className="row">
                 <div className="col-sm-12 col-md-4">
-                    <div className="card mb-0 mt-2 ribbon-box">
-                        <div className="card-body">
-                            {/* <div className="ribbon float-right color-rank-diamond"> Rank kim cương</div> */}
-                            <div className="ribbon-two color-rank-diamond"><span>Kim Cương</span></div>
-                            <div className="media mb-3 mt-1">
-                                <img className="d-flex mr-2 rounded-circle" src="https://coderthemes.com/hyper/saas/assets/images/users/avatar-2.jpg" alt="placeholder image" height="32" />
-                                <div className="media-body">
-                                    <small className="float-right">3 phút trước</small>
-                                    <h6 className="m-0 font-14">Steven Smith <i className="mdi mdi-gender-male"></i><i className="mdi mdi-gender-female"></i></h6>
-                                    <small className="text-muted">caygheysamvuong #9921</small>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col text-center">
-                                    <p>Tiêu đề: abc xyz</p>
-                                </div>
-
-                            </div>
-
-                            <p className="mb-2 text-muted">
-                                <span className="font-italic"><b>"</b>Disrupt pork belly poutine, asymmetrical tousled succulents selfies.
-                                    You probably haven't heard of them tattooed master cleanse live-edge keffiyeh.</span>
-                            </p>
-                            <button type="button" className="btn btn-block btn-primary"><i className="uil uil-comments-alt"></i> Chat ngay</button>
-                        </div>
-                    </div>
+                    <CardPost></CardPost>
                 </div>
             </div>
         </>
