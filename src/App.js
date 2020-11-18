@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Admin from './layout/Admin';
 import Login from './pages/Login/Login';
 import LoginCallback from './pages/Login/LoginCallback';

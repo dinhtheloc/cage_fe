@@ -1,38 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
     Link
 } from "react-router-dom";
-import userApi from '../api/userApi';
 
-export default function Nav() {
+import Loading from './Loading';
 
-    const [userProfile, setUserProfile] = useState({});
-    useEffect(() => {
-        const fetchUserProfile = async () => {
-            try {
-                const response = await userApi.getUserById();
-                setUserProfile(response);
-            } catch (error) {
-                console.log('Failed to fetch product list: ', error);
-            }
-        }
-        fetchUserProfile();
-    }, []);
+export default function Nav({ userProfile }) {
+
     return (
         <div className="left-side-menu left-side-menu-detached" >
-
             <div className="leftbar-user">
-                <a href="#">
-                    <img src={`${process.env.REACT_APP_UPLOAD_URL}/${userProfile.avatar}`} alt="user-image" height="42" className="rounded-circle shadow-sm" />
-                    <span className="leftbar-user-name">{userProfile.name}</span>
-                </a>
+
+                {
+                    userProfile ?
+                        <a href="#">
+                            <img src={`${process.env.REACT_APP_UPLOAD_URL}/${userProfile.avatar}`}
+                                alt="user-image" height="42" className="rounded-circle shadow-sm" />
+                            <span className="leftbar-user-name">{userProfile.name}</span>
+                        </a>
+                        :
+                        <Loading></Loading>
+                }
+
             </div>
 
             {/* - Sidemenu */}
             <ul className="metismenu side-nav">
 
                 <li className="side-nav-title side-nav-item">Danh mục</li>
-                
+
                 <li className="side-nav-item">
                     <Link to="/" className="side-nav-link">
                         <i className="uil-rss"></i>

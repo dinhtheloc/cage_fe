@@ -46,9 +46,6 @@ export default function HomePage() {
                                     <p>Tiêu đề: abc xyz</p>
                                 </div>
 
-                                <div className="col text-center">
-                                    <p>Cần tìm 3 slot</p>
-                                </div>
                             </div>
 
                             <p className="mb-2 text-muted">

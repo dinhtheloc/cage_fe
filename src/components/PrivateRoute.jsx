@@ -1,7 +1,6 @@
 import React from "react";
-import {
-    Redirect, Route
-} from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
+
 
 export default function PrivateRoute({ children, ...rest }) {
     const token = localStorage.getItem('token');
@@ -12,7 +11,7 @@ export default function PrivateRoute({ children, ...rest }) {
                 token ? (
                     children
                 ) : (
-                        <Redirect to='/login'/>
+                        <Redirect to='/login' />
                     )
             }
         />

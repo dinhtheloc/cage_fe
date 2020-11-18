@@ -138,3 +138,7 @@
   .inputfile + label * {
     pointer-events: none;
   }
+
+  .height-537 {
+      height: 537px;
+  }

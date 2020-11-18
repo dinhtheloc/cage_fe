@@ -1,17 +1,36 @@
-import React from 'react';
-import { Switch } from 'react-router-dom';
+
+import React, { useEffect, useState } from "react";
+import { Redirect, Switch } from 'react-router-dom';
+import userApi from '../api/userApi';
+import Loading from '../components/Loading';
 import Nav from '../components/Nav';
 import PrivateRoute from '../components/PrivateRoute';
+import Chat from '../pages/Chat/Chat';
 import HomePage from '../pages/Home/HomePage';
 import ProfilePage from '../pages/Profile/ProfilePage';
-import Chat from '../pages/Chat/Chat';
 
 export default function Admin() {
+
+    const [userProfile, setUserProfile] = useState(null);
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                const response = await userApi.getUserById();
+                setUserProfile(response);
+            } catch (error) {
+                console.log('Failed to fetch product list: ', error);
+            }
+        }
+        fetchUserProfile();
+    }, []);
+
+
+
     return (
         <div className="container-fluid">
             {/*  Begin page */}
             <div className="wrapper">
-                <Nav></Nav>
+                <Nav userProfile={userProfile}></Nav>
                 <div className="content-page">
                     <div className="content">
                         <div className="row">
@@ -23,8 +42,11 @@ export default function Admin() {
                                     <PrivateRoute path='/profile'>
                                         <ProfilePage></ProfilePage>
                                     </PrivateRoute>
-                                    <PrivateRoute path='/chat'>
-                                        <Chat></Chat>
+                                    <PrivateRoute path='/chat/:roomId'>
+                                        {userProfile ? <Chat username={userProfile.name} avatar={userProfile.avatar}></Chat> : <Loading></Loading>}
+                                    </PrivateRoute>
+                                    <PrivateRoute path="*">
+                                        <Redirect to="/" />
                                     </PrivateRoute>
                                 </Switch>
                             </div>
