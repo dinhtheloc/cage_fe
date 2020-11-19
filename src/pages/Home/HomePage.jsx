@@ -22,21 +22,21 @@ export default function HomePage() {
 
             <div
                 style={{ display: 'inline-block', verticalAlign: 'middle' }}
-                class="dropdown mb-2 mr-2">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                className="dropdown mb-2 mr-2">
+                <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i className="uil-signal-alt"></i> Lọc theo rank
             </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Tất cả</a>
-                    <a class="dropdown-item" href="#">Sắt</a>
-                    <a class="dropdown-item" href="#">Đồng</a>
-                    <a class="dropdown-item" href="#">Bạc</a>
-                    <a class="dropdown-item" href="#">Vàng</a>
-                    <a class="dropdown-item" href="#">Bạch kim</a>
-                    <a class="dropdown-item" href="#">Kim cương</a>
-                    <a class="dropdown-item" href="#">Immortal</a>
-                    <a class="dropdown-item" href="#">Radiant</a>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a className="dropdown-item" href="#">Tất cả</a>
+                    <a className="dropdown-item" href="#">Sắt</a>
+                    <a className="dropdown-item" href="#">Đồng</a>
+                    <a className="dropdown-item" href="#">Bạc</a>
+                    <a className="dropdown-item" href="#">Vàng</a>
+                    <a className="dropdown-item" href="#">Bạch kim</a>
+                    <a className="dropdown-item" href="#">Kim cương</a>
+                    <a className="dropdown-item" href="#">Immortal</a>
+                    <a className="dropdown-item" href="#">Radiant</a>
                 </div>
             </div>
 
