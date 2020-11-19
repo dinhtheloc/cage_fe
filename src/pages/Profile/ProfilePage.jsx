@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import userApi from '../../api/userApi';
+import React, { useState } from 'react';
 import UpdateInfoUser from './UpdateInfoUser';
 import UploadAvatarUI from './UploadAvatarUI';
 
 
-export default function ProfilePage() {
+export default function ProfilePage({ userProfile, fetchUserProfile }) {
 
     const [tabIndex, setTabIndex] = useState(1);
 
-    const [userProfile, setUserProfile] = useState({});
-    useEffect(() => {
+    const backToScreenUpdateInfo = () => {
+        setTabIndex(1);
         fetchUserProfile();
-    }, []);
-
-    const fetchUserProfile = async () => {
-        try {
-            const response = await userApi.getUserById();
-            setUserProfile(response);
-        } catch (error) {
-            console.log('Failed to fetch product list: ', error);
-        }
     }
 
 
@@ -78,7 +68,7 @@ export default function ProfilePage() {
                 tabIndex === 1 ?
                     <UpdateInfoUser userProfile={userProfile} fetchUserProfile={fetchUserProfile}></UpdateInfoUser>
                     :
-                    <UploadAvatarUI></UploadAvatarUI>
+                    <UploadAvatarUI backToScreenUpdateInfo={backToScreenUpdateInfo}></UploadAvatarUI>
             }
         </>
     )

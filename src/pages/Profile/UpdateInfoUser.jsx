@@ -28,8 +28,6 @@ export default function UpdateInfoUser({ fetchUserProfile, userProfile }) {
         });
     };  
 
-    
-
     return (
         userProfile ? <form onSubmit={handleSubmit(submit)}>
             <div className="card">

@@ -5,7 +5,7 @@ import getCroppedImg from './CropImage';
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
 const imageMaxSize = 5242880;
 const acceptedFileTypesArray = acceptedFileTypes.split(",").map((item) => { return item.trim() });
-export default function UploadAvatarUI() {
+export default function UploadAvatarUI({ backToScreenUpdateInfo }) {
 
     const [crop, setCrop] = useState({ x: 0, y: 0 });
     const [zoom, setZoom] = useState(1);
@@ -59,7 +59,7 @@ export default function UploadAvatarUI() {
 
             userApi.uploadAvatar(croppedImage).then((response) => {
                 window.$.NotificationApp.send("Yeah", "Cập nhật ảnh đại diện thành công", "top-right", "rgba(0,0,0,0.2)", "success");
-                // fetchUserProfile();
+                backToScreenUpdateInfo();
             }).catch((error) => {
                 console.log(error);
             });

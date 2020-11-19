@@ -13,18 +13,17 @@ export default function Admin() {
 
     const [userProfile, setUserProfile] = useState(null);
     useEffect(() => {
-        const fetchUserProfile = async () => {
-            try {
-                const response = await userApi.getUserById();
-                setUserProfile(response);
-            } catch (error) {
-                console.log('Failed to fetch product list: ', error);
-            }
-        }
         fetchUserProfile();
     }, []);
 
-
+    const fetchUserProfile = async () => {
+        try {
+            const response = await userApi.getUserById();
+            setUserProfile(response);
+        } catch (error) {
+            console.log('Failed to fetch product list: ', error);
+        }
+    }
 
     return (
         <div className="container-fluid">
@@ -40,7 +39,7 @@ export default function Admin() {
                                         <HomePage />
                                     </PrivateRoute>
                                     <PrivateRoute path='/profile'>
-                                        <ProfilePage></ProfilePage>
+                                        {userProfile ? <ProfilePage userProfile={userProfile} fetchUserProfile={fetchUserProfile}></ProfilePage> : <Loading></Loading>}
                                     </PrivateRoute>
                                     <PrivateRoute path='/chat/:roomId'>
                                         {userProfile ? <Chat username={userProfile.name} avatar={userProfile.avatar}></Chat> : <Loading></Loading>}
