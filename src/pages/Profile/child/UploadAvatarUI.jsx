@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Cropper from 'react-easy-crop';
-import userApi from '../../api/userApi';
+import userApi from '../../../api/userApi';
 import getCroppedImg from './CropImage';
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
 const imageMaxSize = 5242880;

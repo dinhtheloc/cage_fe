@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import UpdateInfoUser from './UpdateInfoUser';
-import UploadAvatarUI from './UploadAvatarUI';
+import UpdateInfoUser from './child/UpdateInfoUser';
+import UploadAvatarUI from './child/UploadAvatarUI';
 
 
 export default function ProfilePage({ userProfile, fetchUserProfile }) {

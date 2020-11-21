@@ -2,7 +2,7 @@ import axiosClient from './axiosClient';
 
 class PostApi {
     getAll = (params) => {
-        const url = '/getUsers';
+        const url = '/getPosts';
         return axiosClient.get(url, { params });
     };
 

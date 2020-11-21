@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useForm } from 'react-hook-form';
 
-import postApi from '../../api/postApi';
+import postApi from '../../../api/postApi';
 
 export default function FormCreatePost() {
 

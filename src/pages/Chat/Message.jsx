@@ -10,8 +10,6 @@ export default function Message({ message: { text, user }, name, avatar }) {
     }
 
 
-    console.log('avatar', avatar);
-
     return (
         !isSentByCurrentUser
             ? (

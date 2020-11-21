@@ -1,9 +1,27 @@
-import React from 'react'
-import FormCreatePost from './FormCreatePost';
+import React, { useEffect, useState } from 'react';
+import CardPost from './child/CardPost';
+import FormCreatePost from './child/FormCreatePost';
+import postApi from '../../api/postApi';
 
-import CardPost from './CardPost';
+
 
 export default function HomePage() {
+
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        search();
+    }, []);
+
+    const search = async () => {
+        try {
+            const response = await postApi.getAll();
+            setPosts(response);
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
+
+
     return (
         <>
             <div className="row">
@@ -47,9 +65,18 @@ export default function HomePage() {
             <FormCreatePost></FormCreatePost>
 
             <div className="row">
-                <div className="col-sm-12 col-md-4">
-                    <CardPost></CardPost>
-                </div>
+
+
+                {
+                    posts.map(i => {
+                        return (
+                            <div className="col-sm-12 col-md-4">
+                                <CardPost data={i}></CardPost>
+                            </div>)
+                    })
+                }
+
+
             </div>
         </>
     )

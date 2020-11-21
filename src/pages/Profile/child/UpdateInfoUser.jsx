@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import userApi from '../../api/userApi';
-import Loading from '../../components/Loading';
+import userApi from '../../../api/userApi';
+import Loading from '../../../components/Loading';
 
 export default function UpdateInfoUser({ fetchUserProfile, userProfile }) {
     const { register, handleSubmit, errors, reset } = useForm();
