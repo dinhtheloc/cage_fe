@@ -70,8 +70,8 @@ export default function HomePage() {
                 {
                     posts.map(i => {
                         return (
-                            <div className="col-sm-12 col-md-4">
-                                <CardPost data={i}></CardPost>
+                            <div key={i['_id']} className="col-sm-12 col-md-4">
+                                <CardPost  data={i}></CardPost>
                             </div>)
                     })
                 }

@@ -63,8 +63,9 @@ export default function FormCreatePost() {
                                         <select
                                             ref={register({ required: true })}
                                             name="rank"
+                                            defaultValue="none"
                                             className="custom-select">
-                                            <option selected value="none">Unrank</option>
+                                            <option value="none">Unrank</option>
                                             <option value="iron">Sắt</option>
                                             <option value="bronze">Đồng</option>
                                             <option value="silver">Bạc</option>
@@ -83,9 +84,10 @@ export default function FormCreatePost() {
                                     <div className="form-group">
                                         <label>Số slot cần tìm <span className="text-danger">*</span></label>
                                         <select className="custom-select"
+                                            defaultValue="1"
                                             ref={register({ required: true })}
                                             name="slot">
-                                            <option selected value="1">Một</option>
+                                            <option value="1">Một</option>
                                             <option value="2">Hai</option>
                                             <option value="3">Ba</option>
                                             <option value="4">Bốn</option>

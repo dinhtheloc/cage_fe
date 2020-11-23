@@ -59,7 +59,7 @@ export default function Nav({ userProfile }) {
                 <a href="#" className="float-right close-btn text-body">
                     <i className="mdi mdi-close"></i>
                 </a>
-                <img src="assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
+                <img src="/assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
                 <h5 className="mt-3">Unlimited Access</h5>
                 <p className="mb-3">Upgrade to plan to get access to unlimited reports</p>
                 <a href="#" className="btn btn-outline-primary btn-sm">Upgrade</a>

@@ -10,20 +10,14 @@ import Messages from './Messages';
 const ENDPOINT = process.env.REACT_APP_SOCKET;
 let socket;
 
-export default function Chat({username, avatar}) {
-    
+export default function Chat({userProfile}) {
     const { roomId } = useParams();
-
-
-    const [name, setName] = useState(username);
-    const [room, setRoom] = useState(roomId);
-    const [users, setUsers] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         socket = io(ENDPOINT);
-        socket.emit('join', { name, room }, (error) => {
+        socket.emit('join', { roomId: `${userProfile.facebook_id}_${roomId}` }, (error) => {
             if (error) {
                 window.$.NotificationApp.send("Opps", error, "top-right", "rgba(0,0,0,0.2)", "error");
             }
@@ -31,12 +25,12 @@ export default function Chat({username, avatar}) {
     }, []);
 
     useEffect(() => {
-        socket.on('message', message => {
-            setMessages(messages => [...messages, message]);
+        socket.on('getData', ({messages}) => {
+            setMessages(messages);
         });
 
-        socket.on("roomData", ({ users }) => {
-            setUsers(users);
+        socket.on('message', message => {
+            setMessages(messages => [...messages, message]);
         });
     }, []);
 
@@ -44,7 +38,15 @@ export default function Chat({username, avatar}) {
         event.preventDefault();
 
         if (message) {
-            socket.emit('sendMessage', message, () => setMessage(''));
+
+            const data = {
+                message, 
+                roomId: `${userProfile.facebook_id}_${roomId}`,
+                user: {...userProfile}
+            }
+
+
+            socket.emit('sendMessage', data, () => setMessage(''));
         }
     }
 
@@ -69,7 +71,7 @@ export default function Chat({username, avatar}) {
                 <div className="col-9">
                     <div className="card">
                         <div className="card-body">
-                            <Messages messages={messages} name={name} avatar={avatar}></Messages>
+                            <Messages messages={messages} userId={userProfile.facebook_id} name={userProfile.name} avatar={userProfile.avatar}></Messages>
                             <Input message={message} setMessage={setMessage} sendMessage={sendMessage}></Input>
                         </div> {/*  end card-body  */}
                     </div> {/*  end card  */}

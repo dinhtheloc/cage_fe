@@ -42,7 +42,7 @@ export default function Admin() {
                                         {userProfile ? <ProfilePage userProfile={userProfile} fetchUserProfile={fetchUserProfile}></ProfilePage> : <Loading></Loading>}
                                     </PrivateRoute>
                                     <PrivateRoute path='/chat/:roomId'>
-                                        {userProfile ? <Chat username={userProfile.name} avatar={userProfile.avatar}></Chat> : <Loading></Loading>}
+                                        {userProfile ? <Chat userProfile={userProfile} ></Chat> : <Loading></Loading>}
                                     </PrivateRoute>
                                     <PrivateRoute path="*">
                                         <Redirect to="/" />
