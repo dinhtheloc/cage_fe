@@ -2,25 +2,50 @@ import React, { useEffect, useState } from 'react';
 import CardPost from './child/CardPost';
 import FormCreatePost from './child/FormCreatePost';
 import postApi from '../../api/postApi';
+import Pagination from '../../components/Pagination';
 
-
+const listRank = new Map();
+listRank.set('iron', 'Sắt');
+listRank.set('bronze', 'Đồng');
+listRank.set('silver', 'Bạc');
+listRank.set('gold', 'Vàng');
+listRank.set('platinum', 'Bạch kim');
+listRank.set('diamond', 'Kim cương');
+listRank.set('immortal', 'Immortal');
+listRank.set('radiant', 'Radiant');
 
 export default function HomePage() {
 
     const [posts, setPosts] = useState([]);
+    const [count, setCount] = useState(0);
+    const [pageIndex, setPageIndex] = useState(1);
+    const [pageSize, setPageSize] = useState(9);
+    const [totalPages, setTotalPages] = useState(0);
+
+
+    const [rankFilter, setRankFilter] = useState(null);
     useEffect(() => {
         search();
-    }, []);
+    }, [pageIndex]);
 
     const search = async () => {
+
+        const req = {
+            pageIndex,
+            pageSize
+        }
+
         try {
-            const response = await postApi.getAll();
-            setPosts(response);
+            const { count, pageIndex, posts, totalPages } = await postApi.getAll(req);
+            setPosts(posts);
+
+            setCount(count);
+            setPageIndex(Number(pageIndex));
+            setTotalPages(totalPages);
         } catch (error) {
             console.log('error', error);
         }
     }
-
 
     return (
         <>
@@ -40,27 +65,27 @@ export default function HomePage() {
 
             <div
                 style={{ display: 'inline-block', verticalAlign: 'middle' }}
-                className="dropdown mb-2 mr-2">
+                className="dropdown mb-3 mr-2">
                 <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i className="uil-signal-alt"></i> Lọc theo rank
+                    <i className="uil-signal-alt"></i> Lọc theo rank { rankFilter ? <span class="badge badge-light">{listRank.get(rankFilter)}</span> : '' }
             </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item" href="#">Tất cả</a>
-                    <a className="dropdown-item" href="#">Sắt</a>
-                    <a className="dropdown-item" href="#">Đồng</a>
-                    <a className="dropdown-item" href="#">Bạc</a>
-                    <a className="dropdown-item" href="#">Vàng</a>
-                    <a className="dropdown-item" href="#">Bạch kim</a>
-                    <a className="dropdown-item" href="#">Kim cương</a>
-                    <a className="dropdown-item" href="#">Immortal</a>
-                    <a className="dropdown-item" href="#">Radiant</a>
+                    <button className="dropdown-item" onClick={() => setRankFilter(null)}>Tất cả</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('iron')}>{listRank.get('iron')}</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('bronze')}>{listRank.get('bronze')}</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('silver')}>{listRank.get('silver')}</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('gold')}>{listRank.get('gold')}</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('platinum')}>{listRank.get('platinum')}</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('diamond')}>{listRank.get('diamond')}</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('immortal')}>{listRank.get('immortal')}</button>
+                    <button className="dropdown-item" onClick={() => setRankFilter('radiant')}>{listRank.get('radiant')}</button>
                 </div>
             </div>
 
             <button type="button"
                 data-toggle="modal" data-target="#staticBackdrop"
-                className="btn btn-success mb-2"><i className="uil-plus"></i> Tạo bài viết</button>
+                className="btn btn-danger btn-rounded mb-3"><i className="uil-plus"></i> Tạo bài viết</button>
 
             <FormCreatePost></FormCreatePost>
 
@@ -71,13 +96,26 @@ export default function HomePage() {
                     posts.map(i => {
                         return (
                             <div key={i['_id']} className="col-sm-12 col-md-4">
-                                <CardPost  data={i}></CardPost>
+                                <CardPost data={i}></CardPost>
                             </div>)
                     })
                 }
 
 
             </div>
+
+            <div className={'text-right mt-4'}>
+                <Pagination count={count}
+                    pageIndex={pageIndex}
+                    changePagination={(i) => {
+                        setPageIndex(i);
+
+                    }
+
+                    }
+                    totalPages={totalPages} ></Pagination>
+            </div>
+
         </>
     )
 }

@@ -25,7 +25,6 @@ export default function FormCreatePost() {
         console.log(data);
         postApi.createPost({ ...data }).then((response) => {
             window.$.NotificationApp.send("Yeah", "Tạo mới thành công", "top-right", "rgba(0,0,0,0.2)", "success");
-            // $('#myModal').modal('hide')
             window.$('#staticBackdrop').modal('hide');
         }).catch((error) => {
             console.log(error);
