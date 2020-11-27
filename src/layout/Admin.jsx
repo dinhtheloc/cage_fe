@@ -41,7 +41,7 @@ export default function Admin() {
                                     <PrivateRoute path='/profile'>
                                         {userProfile ? <ProfilePage userProfile={userProfile} fetchUserProfile={fetchUserProfile}></ProfilePage> : <Loading></Loading>}
                                     </PrivateRoute>
-                                    <PrivateRoute path='/chat/:roomId'>
+                                    <PrivateRoute path='/chat/:facebookId'>
                                         {userProfile ? <Chat userProfile={userProfile} ></Chat> : <Loading></Loading>}
                                     </PrivateRoute>
                                     <PrivateRoute path="*">

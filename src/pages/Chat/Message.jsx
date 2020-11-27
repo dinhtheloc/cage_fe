@@ -20,7 +20,7 @@ export default function Message({ message, name, avatar, userId }) {
                     </div>
                     <div className="conversation-text">
                         <div className="ctext-wrap">
-                            <i>{message.user}</i>
+                            <i>{message.name}</i>
                             <p>{message.message}</p>
                         </div>
                     </div>

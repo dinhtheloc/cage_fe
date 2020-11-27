@@ -24,7 +24,7 @@ axiosClient.interceptors.response.use((response) => {
 }, (error) => {
     // Handle errors
     if(error.response.status === 403){
-        window.location.href = `${process.env.REACT_APP_BASE_HREF}/logout`;
+        window.location.href = `${process.env.REACT_APP_BASE_HREF}logout`;
     }
     return Promise.reject(error);
 });
