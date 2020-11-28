@@ -45,6 +45,13 @@ export default function Nav({ userProfile }) {
                 </li>
 
                 <li className="side-nav-item">
+                    <Link to="/notifications" className="side-nav-link">
+                        <i className="uil-bell"></i>
+                        <span> Thông báo </span>
+                    </Link>
+                </li>
+
+                <li className="side-nav-item">
                     <Link to="/logout" className="side-nav-link">
                         <i className="uil-power"></i>
                         <span> Đăng xuất hệ thống </span>

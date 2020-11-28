@@ -8,12 +8,15 @@ import PrivateRoute from '../components/PrivateRoute';
 import Chat from '../pages/Chat/Chat';
 import HomePage from '../pages/Home/HomePage';
 import ProfilePage from '../pages/Profile/ProfilePage';
+import NotificationPage from '../pages/Notification/NotificationPage';
 
 export default function Admin() {
 
     const [userProfile, setUserProfile] = useState(null);
     useEffect(() => {
         fetchUserProfile();
+
+
     }, []);
 
     const fetchUserProfile = async () => {
@@ -43,6 +46,10 @@ export default function Admin() {
                                     </PrivateRoute>
                                     <PrivateRoute path='/chat/:facebookId'>
                                         {userProfile ? <Chat userProfile={userProfile} ></Chat> : <Loading></Loading>}
+                                    </PrivateRoute>
+
+                                    <PrivateRoute path='/notifications'>
+                                        <NotificationPage></NotificationPage>
                                     </PrivateRoute>
                                     <PrivateRoute path="*">
                                         <Redirect to="/" />
