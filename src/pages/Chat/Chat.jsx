@@ -1,14 +1,11 @@
 
-import queryString from 'query-string';
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import io from 'socket.io-client';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
 
-const ENDPOINT = process.env.REACT_APP_SOCKET;
-let socket;
+import { joinRoom, getDataRoom, messageRoom, sendMessageRoom } from '../../api/socket';
 
 export default function Chat({ userProfile }) {
     const { facebookId } = useParams();
@@ -18,27 +15,25 @@ export default function Chat({ userProfile }) {
     const [receiver, setReceiver] = useState({});
 
     useEffect(() => {
-        socket = io(ENDPOINT);
 
         const arrayUserIds = [userProfile.facebook_id, facebookId];
-
-        socket.emit('join', { arrayUserIds, facebook_id: facebookId }, (error) => {
-            if (error) {
-                window.$.NotificationApp.send("Opps", error, "top-right", "rgba(0,0,0,0.2)", "error");
-            }
-        });
+        joinRoom(arrayUserIds, facebookId);
+        // socket.emit('join', { arrayUserIds, facebook_id: facebookId }, (error) => {
+        //     if (error) {
+        //         window.$.NotificationApp.send("Opps", error, "top-right", "rgba(0,0,0,0.2)", "error");
+        //     }
+        // });
     }, []);
 
     useEffect(() => {
-        socket.on('getData', ({ messages, roomId, user }) => {
+        getDataRoom(({ messages, roomId, user }) => {
             setRoom(roomId);
             setMessages(messages);
             setReceiver(user);
-            console.log('user', user);
         });
 
-        socket.on('message', message => {
-            setMessages(messages => [...messages, message]);
+        messageRoom((messageRoom) => {
+            setMessages(messages => [...messages, messageRoom]);
         });
     }, []);
 
@@ -51,7 +46,7 @@ export default function Chat({ userProfile }) {
                 roomId: room,
                 user: { ...userProfile }
             }
-            socket.emit('sendMessage', data);
+            sendMessageRoom(data);
             setMessage('');
         }
     }
