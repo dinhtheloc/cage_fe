@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
@@ -13,16 +13,15 @@ export default function Chat({ userProfile }) {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [receiver, setReceiver] = useState({});
+    const history = useHistory();
 
     useEffect(() => {
-
         const arrayUserIds = [userProfile.facebook_id, facebookId];
+        if (userProfile.facebook_id === facebookId) {
+            history.push("/");
+            return;
+        }
         joinRoom(arrayUserIds, facebookId);
-        // socket.emit('join', { arrayUserIds, facebook_id: facebookId }, (error) => {
-        //     if (error) {
-        //         window.$.NotificationApp.send("Opps", error, "top-right", "rgba(0,0,0,0.2)", "error");
-        //     }
-        // });
     }, []);
 
     useEffect(() => {

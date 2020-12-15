@@ -14,7 +14,7 @@ listRank.set('diamond', 'Kim cương');
 listRank.set('immortal', 'Immortal');
 listRank.set('radiant', 'Radiant');
 
-export default function HomePage() {
+export default function HomePage({userProfile}) {
 
     const [posts, setPosts] = useState([]);
     const [count, setCount] = useState(0);
@@ -100,18 +100,16 @@ export default function HomePage() {
             <FormCreatePost></FormCreatePost>
 
             <div className="row">
-
-
                 {
                     posts.map(i => {
                         return (
                             <div key={i['_id']} className="col-sm-12 col-md-4">
-                                <CardPost data={i}></CardPost>
+                                <CardPost 
+                                facebookId={userProfile.facebook_id}
+                                data={i}></CardPost>
                             </div>)
                     })
                 }
-
-
             </div>
 
             <div className={'text-right mt-4'}>
@@ -121,7 +119,6 @@ export default function HomePage() {
                         setPageIndex(i);
                         search();
                     }
-
                     }
                     totalPages={totalPages} ></Pagination>
             </div>

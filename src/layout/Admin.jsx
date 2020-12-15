@@ -15,8 +15,6 @@ export default function Admin() {
     const [userProfile, setUserProfile] = useState(null);
     useEffect(() => {
         fetchUserProfile();
-
-
     }, []);
 
     const fetchUserProfile = async () => {
@@ -39,7 +37,7 @@ export default function Admin() {
                             <div className="col-12">
                                 <Switch>
                                     <PrivateRoute path='/' exact>
-                                        <HomePage />
+                                        {userProfile ? <HomePage userProfile={userProfile} ></HomePage> : <Loading></Loading>}
                                     </PrivateRoute>
                                     <PrivateRoute path='/profile'>
                                         {userProfile ? <ProfilePage userProfile={userProfile} fetchUserProfile={fetchUserProfile}></ProfilePage> : <Loading></Loading>}
@@ -49,7 +47,7 @@ export default function Admin() {
                                     </PrivateRoute>
 
                                     <PrivateRoute path='/notifications'>
-                                        <NotificationPage></NotificationPage>
+                                        {userProfile ? <NotificationPage userProfile={userProfile} ></NotificationPage> : <Loading></Loading>}
                                     </PrivateRoute>
                                     <PrivateRoute path="*">
                                         <Redirect to="/" />

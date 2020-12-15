@@ -6,7 +6,7 @@ import {
 import timeSince from './timeSince';
 
 
-function CardPost({ data }) {
+function CardPost({ data, facebookId }) {
     return (
         <div className="card mb-0 mt-2 ribbon-box">
             <div className="card-body">
@@ -27,7 +27,14 @@ function CardPost({ data }) {
                 <p className="mb-2 text-muted">
                     <span className="font-italic"><b>"</b>{data.description}</span>
                 </p>
-                <Link to={`/chat/${data.user.facebook_id}`} className="btn btn-block btn-primary"><i className="uil uil-comments-alt"></i> Chat ngay</Link>
+                {
+                    facebookId !== data.user.facebook_id ?
+                        <Link to={`/chat/${data.user.facebook_id}`}
+                            className="btn btn-block btn-primary"><i className="uil uil-comments-alt"></i> Chat ngay
+                        </Link>
+                    : ''
+                }
+
             </div>
         </div>
     );

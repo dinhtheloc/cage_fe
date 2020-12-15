@@ -5,7 +5,7 @@ const socket = openSocket(ENDPOINT);
 function joinRoom(arrayUserIds, facebookId) {
     socket.emit('join', { arrayUserIds, facebook_id: facebookId }, (error) => {
         if (error) {
-            window.$.NotificationApp.send("Opps", error, "top-right", "rgba(0,0,0,0.2)", "error");
+            window.$.NotificationApp.send("Opps", error.status, "top-right", "rgba(0,0,0,0.2)", "error");
         }
 
     });
@@ -30,6 +30,19 @@ function sendMessageRoom(data) {
     socket.emit('sendMessage', data);
 }
 
+function joinNotification(facebookId) {
+    socket.emit('joinNotification', { facebook_id: facebookId }, (error) => {
+        if (error) {
+            window.$.NotificationApp.send("Opps", error, "top-right", "rgba(0,0,0,0.2)", "error");
+        }
+    });
+}
+
+function getNotifications(fn) {
+    socket.on('getNotifications', ({ notifications }) => {
+        fn({ notifications });
+    });
+}
 
 
-export { joinRoom, getDataRoom, messageRoom, sendMessageRoom };
+export { joinRoom, getDataRoom, messageRoom, sendMessageRoom, joinNotification, getNotifications };

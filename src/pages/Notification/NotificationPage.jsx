@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { getNotifications, joinNotification } from '../../api/socket';
+import ItemListNotification from './ItemListNotification';
+export default function NotificationPage({ userProfile }) {
 
-export default function NotificationPage() {
+    const [notificationsData, setNotificationsData] = useState([]);
+
+    useEffect(() => {
+        joinNotification(userProfile.facebook_id);
+
+        getNotifications(({ notifications }) => {
+            setNotificationsData(notifications);
+        });
+    }, []);
+
+    console.log('notifications', notificationsData);
+
     return (
         <>
             <div className="row">
@@ -18,58 +32,16 @@ export default function NotificationPage() {
             </div>
             <div className="row">
                 <div className="col-12">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <div class="tab-content">
-                                <div class="tab-pane show active p-3">
-
-                                    {/*  start search box */}
-                                    {/* <div class="app-search">
-                                        <form>
-                                            <div class="form-group position-relative">
-                                                <input type="text" class="form-control"
-                                                    placeholder="People, groups & messages..." />
-                                                <span class="mdi mdi-magnify search-icon"></span>
-                                            </div>
-                                        </form>
-                                    </div> */}
-                                    {/*  end search box */}
-
-                                    {/*  users */}
-                                    <div class="row">
-                                        <div class="col">
+                    <div className="card">
+                        <div className="card-body p-0">
+                            <div className="tab-content">
+                                <div className="tab-pane show active p-3">
+                                    <div className="row">
+                                        <div className="col">
                                             <div style={{ maxHeight: "550px", overflow: 'hidden scroll' }}>
-                                                <a href="javascript:void(0);" class="text-body">
-                                                    <div class="media mt-1 p-2 lift">
-                                                        <img src="//coderthemes.com/hyper/saas/assets/images/users/avatar-2.jpg" class="mr-2 rounded-circle" height="48" alt="Brandon Smith" />
-                                                        <div class="media-body">
-                                                            <h5 class="mt-0 mb-0 font-14">
-                                                                <span class="float-right text-muted font-12">4:30am</span>
-                                                                            Brandon Smith
-                                                                        </h5>
-                                                            <p class="mt-1 mb-0 text-muted font-14">
-                                                                <span class="w-25 float-right text-right"><span class="badge badge-success-lighten">new</span></span>
-                                                                <span class="w-75">How are you today?</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="text-body">
-                                                    <div class="media mt-1 p-2 lift">
-                                                        <img src="//coderthemes.com/hyper/saas/assets/images/users/avatar-2.jpg" class="mr-2 rounded-circle" height="48" alt="Brandon Smith" />
-                                                        <div class="media-body">
-                                                            <h5 class="mt-0 mb-0 font-14">
-                                                                <span class="float-right text-muted font-12">4:30am</span>
-                                                                            Brandon Smith
-                                                                        </h5>
-                                                            <p class="mt-1 mb-0 text-muted font-14">
-                                                                <span class="w-25 float-right text-right"><span class="badge badge-danger-lighten">3</span></span>
-                                                                <span class="w-75">How are you today?</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-
+                                                {notificationsData.map((data, i) => <ItemListNotification key={i} 
+                                                facebookId={userProfile.facebook_id}
+                                                data={data}></ItemListNotification>)}
                                             </div> {/*  end slimscroll*/}
                                         </div> {/*  End col */}
                                     </div>
