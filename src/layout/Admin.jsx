@@ -10,9 +10,15 @@ import HomePage from '../pages/Home/HomePage';
 import ProfilePage from '../pages/Profile/ProfilePage';
 import NotificationPage from '../pages/Notification/NotificationPage';
 
+import { getNotifications, joinNotification, receiveNotifications } from '../api/socket';
+
+
 export default function Admin() {
 
     const [userProfile, setUserProfile] = useState(null);
+    const [notificationsData, setNotificationsData] = useState([]);
+    const [countNoti, setCountNoti] = useState(0);
+
     useEffect(() => {
         fetchUserProfile();
     }, []);
@@ -21,16 +27,31 @@ export default function Admin() {
         try {
             const response = await userApi.getUserById();
             setUserProfile(response);
+            joinNotification(response.facebook_id);
+
+            getNotifications(({ notifications, count }) => {
+                setNotificationsData(notifications);
+                setCountNoti(count);
+            });
+
+            receiveNotifications(({ notifications, count }) => {
+
+                setNotificationsData(notifications);
+                setCountNoti(count);
+            });
         } catch (error) {
             console.log('Failed to fetch product list: ', error);
         }
     }
 
+
     return (
         <div className="container-fluid">
             {/*  Begin page */}
             <div className="wrapper">
-                <Nav userProfile={userProfile}></Nav>
+                {userProfile ? <Nav 
+                countNoti={countNoti}
+                userProfile={userProfile} ></Nav> : <Loading></Loading>}
                 <div className="content-page">
                     <div className="content">
                         <div className="row">
@@ -47,7 +68,8 @@ export default function Admin() {
                                     </PrivateRoute>
 
                                     <PrivateRoute path='/notifications'>
-                                        {userProfile ? <NotificationPage userProfile={userProfile} ></NotificationPage> : <Loading></Loading>}
+                                        {userProfile ? <NotificationPage userProfile={userProfile}
+                                            notificationsData={notificationsData} ></NotificationPage> : <Loading></Loading>}
                                     </PrivateRoute>
                                     <PrivateRoute path="*">
                                         <Redirect to="/" />

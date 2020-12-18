@@ -1,11 +1,12 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import {
     Link
 } from "react-router-dom";
 
 import Loading from './Loading';
 
-export default function Nav({ userProfile }) {
+export default function Nav({ userProfile, countNoti }) {
 
     return (
         <div className="left-side-menu left-side-menu-detached" >
@@ -47,6 +48,7 @@ export default function Nav({ userProfile }) {
                 <li className="side-nav-item">
                     <Link to="/notifications" className="side-nav-link">
                         <i className="uil-bell"></i>
+                        <span className="badge badge-danger float-right">{countNoti > 0 ? countNoti: ''}</span>
                         <span> Thông báo </span>
                     </Link>
                 </li>

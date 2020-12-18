@@ -5,7 +5,7 @@ import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
 
-import { joinRoom, getDataRoom, messageRoom, sendMessageRoom } from '../../api/socket';
+import { joinRoom, getDataRoom, receiveMessages, sendMessageRoom } from '../../api/socket';
 
 export default function Chat({ userProfile }) {
     const { facebookId } = useParams();
@@ -21,7 +21,7 @@ export default function Chat({ userProfile }) {
             history.push("/");
             return;
         }
-        joinRoom(arrayUserIds, facebookId);
+        joinRoom(arrayUserIds);
     }, []);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export default function Chat({ userProfile }) {
             setReceiver(user);
         });
 
-        messageRoom((messageRoom) => {
+        receiveMessages((messageRoom) => {
             setMessages(messages => [...messages, messageRoom]);
         });
     }, []);

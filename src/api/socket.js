@@ -2,8 +2,8 @@ import openSocket from 'socket.io-client';
 const ENDPOINT = process.env.REACT_APP_SOCKET;
 const socket = openSocket(ENDPOINT);
 
-function joinRoom(arrayUserIds, facebookId) {
-    socket.emit('join', { arrayUserIds, facebook_id: facebookId }, (error) => {
+function joinRoom(arrayUserIds) {
+    socket.emit('join', { arrayUserIds }, (error) => {
         if (error) {
             window.$.NotificationApp.send("Opps", error.status, "top-right", "rgba(0,0,0,0.2)", "error");
         }
@@ -17,12 +17,11 @@ function getDataRoom(fn) {
     });
 }
 
-function messageRoom(fn) {
+function receiveMessages(fn) {
     socket.on('message', message => {
 
         const messageRoom = message;
         fn(messageRoom);
-        // setMessages(messages => [...messages, message]);
     });
 }
 
@@ -38,11 +37,27 @@ function joinNotification(facebookId) {
     });
 }
 
+
 function getNotifications(fn) {
-    socket.on('getNotifications', ({ notifications }) => {
-        fn({ notifications });
+    socket.on('getNotifications', ({ notifications, count }) => {
+        fn({ notifications, count });
     });
 }
 
 
-export { joinRoom, getDataRoom, messageRoom, sendMessageRoom, joinNotification, getNotifications };
+function receiveNotifications(fn) {
+    socket.on('notifications', ({ notifications, count }) => {
+        fn({ notifications, count });
+    });
+}
+
+
+export {
+    joinRoom,
+    getDataRoom,
+    receiveMessages,
+    sendMessageRoom,
+    joinNotification,
+    getNotifications,
+    receiveNotifications
+};

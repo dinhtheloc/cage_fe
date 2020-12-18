@@ -1,20 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { getNotifications, joinNotification } from '../../api/socket';
+import React from "react";
 import ItemListNotification from './ItemListNotification';
-export default function NotificationPage({ userProfile }) {
-
-    const [notificationsData, setNotificationsData] = useState([]);
-
-    useEffect(() => {
-        joinNotification(userProfile.facebook_id);
-
-        getNotifications(({ notifications }) => {
-            setNotificationsData(notifications);
-        });
-    }, []);
-
-    console.log('notifications', notificationsData);
-
+export default function NotificationPage({ notificationsData, userProfile }) {
     return (
         <>
             <div className="row">
@@ -41,6 +27,7 @@ export default function NotificationPage({ userProfile }) {
                                             <div style={{ maxHeight: "550px", overflow: 'hidden scroll' }}>
                                                 {notificationsData.map((data, i) => <ItemListNotification key={i} 
                                                 facebookId={userProfile.facebook_id}
+                                                userProfile={userProfile}
                                                 data={data}></ItemListNotification>)}
                                             </div> {/*  end slimscroll*/}
                                         </div> {/*  End col */}
@@ -50,10 +37,8 @@ export default function NotificationPage({ userProfile }) {
                             </div> {/*  end tab content*/}
                         </div> {/*  end card-body*/}
                     </div> {/*  end card*/}
-
                 </div>
             </div>
-
         </>
 
 

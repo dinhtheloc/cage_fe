@@ -4,7 +4,6 @@ import {
     Link
 } from "react-router-dom";
 export default function ItemListNotification({ data, facebookId }) {
-    console.log(data);
     let id = '';
     if (facebookId === data.arrayUserIds[0]) {
         id = data.arrayUserIds[1];
