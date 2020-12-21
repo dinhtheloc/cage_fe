@@ -65,13 +65,15 @@ export default function Nav({ userProfile, countNoti }) {
 
             {/*  Help Box */}
             <div className="help-box help-box-light text-center">
-                <a href="#" className="float-right close-btn text-body">
+                {/* <a href="#" className="float-right close-btn text-body">
                     <i className="mdi mdi-close"></i>
-                </a>
-                <img src="/assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
-                <h5 className="mt-3">Unlimited Access</h5>
-                <p className="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                <a href="#" className="btn btn-outline-primary btn-sm">Upgrade</a>
+                </a> */}
+                <img src="/assets/images/youtube.svg" height="90" alt="Helper Icon Image" />
+                <h5 className="mt-3">CAGE Gaming</h5>
+                <p className="mb-3">Bỏ chút thời gian ủng hộ mình bằng cách đăng ký kênh youtube của mình nhé</p>
+                <a href="https://www.youtube.com/channel/UCF061_8xINLPsYHPcBReBFA?view_as=subscriber" 
+                target="_blank"
+                className="btn btn-outline-primary btn-sm">Đăng ký</a>
             </div>
             {/*  end Help Box */}
             {/*  End Sidebar */}
