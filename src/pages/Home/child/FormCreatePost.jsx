@@ -4,28 +4,16 @@ import { useForm } from 'react-hook-form';
 
 import postApi from '../../../api/postApi';
 
-export default function FormCreatePost() {
+export default function FormCreatePost({ search }) {
 
 
     const { register, handleSubmit, errors, reset } = useForm();
-    // useEffect(() => {
-    //     if (userProfile) {
-    //         reset({
-    //             name: userProfile.name,
-    //             rank: userProfile.rank,
-    //             valorant_id: userProfile.valorant_id,
-    //             valorant_name: userProfile.valorant_name,
-    //             gender: userProfile.gender
-    //         });
-    //     }
-
-    // }, [userProfile]);
 
     const submit = data => {
-        console.log(data);
         postApi.createPost({ ...data }).then((response) => {
             window.$.NotificationApp.send("Yeah", "Tạo mới thành công", "top-right", "rgba(0,0,0,0.2)", "success");
             window.$('#staticBackdrop').modal('hide');
+            search();
         }).catch((error) => {
             console.log(error);
             window.$.NotificationApp.send("Opps", error, "top-right", "rgba(0,0,0,0.2)", "error");
@@ -79,7 +67,7 @@ export default function FormCreatePost() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col">
+                                {/* <div className="col">
                                     <div className="form-group">
                                         <label>Số slot cần tìm <span className="text-danger">*</span></label>
                                         <select className="custom-select"
@@ -95,7 +83,7 @@ export default function FormCreatePost() {
                                             {errors.slot && "Slot là trường bắt buộc"}
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className="form-group mb-3">

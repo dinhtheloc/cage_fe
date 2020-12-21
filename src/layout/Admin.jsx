@@ -1,16 +1,16 @@
 
 import React, { useEffect, useState } from "react";
-import { Redirect, Switch } from 'react-router-dom';
+import { Link, Redirect, Switch } from 'react-router-dom';
+import { getNotifications, joinNotification, receiveNotifications } from '../api/socket';
 import userApi from '../api/userApi';
 import Loading from '../components/Loading';
 import Nav from '../components/Nav';
 import PrivateRoute from '../components/PrivateRoute';
 import Chat from '../pages/Chat/Chat';
 import HomePage from '../pages/Home/HomePage';
-import ProfilePage from '../pages/Profile/ProfilePage';
 import NotificationPage from '../pages/Notification/NotificationPage';
+import ProfilePage from '../pages/Profile/ProfilePage';
 
-import { getNotifications, joinNotification, receiveNotifications } from '../api/socket';
 
 
 export default function Admin() {
@@ -49,12 +49,18 @@ export default function Admin() {
         <div className="container-fluid">
             {/*  Begin page */}
             <div className="wrapper">
-                {userProfile ? <Nav 
-                countNoti={countNoti}
-                userProfile={userProfile} ></Nav> : <Loading></Loading>}
+                {userProfile ? <Nav
+                    countNoti={countNoti}
+                    userProfile={userProfile} ></Nav> : <Loading></Loading>}
                 <div className="content-page">
                     <div className="content">
                         <div className="row">
+                            {userProfile && !userProfile.valorant_id && !userProfile.valorant_name ? 
+                            <div className="col-12 mt-4">
+                                <div class="alert alert-primary" role="alert">
+                                    <strong>Xin chào người mới.</strong> Thông tin cá nhân của bạn đang bỏ trống kìa! <Link to="/profile">Click vào đây</Link> để cập nhật hồ sơ cá nhân.
+                                </div>
+                            </div> : ''}
                             <div className="col-12">
                                 <Switch>
                                     <PrivateRoute path='/' exact>
@@ -84,13 +90,12 @@ export default function Admin() {
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-md-6">
-                                    <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                                    <script>document.write(new Date().getFullYear())</script> © CAGE GAMING
                               </div>
                                 <div className="col-md-6">
                                     <div className="text-md-right footer-links d-none d-md-block">
-                                        <a href="#">About</a>
-                                        <a href="#">Support</a>
-                                        <a href="#">Contact Us</a>
+                                        <a target="_blank" href="https://www.facebook.com/gaming/cayghegaming/">Facebook</a>
+                                        <a target="_blank" href="https://www.youtube.com/channel/UCF061_8xINLPsYHPcBReBFA?view_as=subscriber">Youtube</a>
                                     </div>
                                 </div>
                             </div>

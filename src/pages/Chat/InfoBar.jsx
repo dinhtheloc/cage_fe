@@ -25,10 +25,10 @@ export default function InfoBar({ avatar, name, riotId, riotName, gender, rank }
                         <p>#{riotId}</p>
 
                         <p className="mt-4 mb-1"><strong> Giới tính:</strong></p>
-                        <p>{gender}</p>
+                        <p>{gender === 'male' ? 'Nam' : gender === 'female' ? 'Nữ' : ''}</p>
 
                         <p className="mt-4 mb-1"><strong> Rank:</strong></p>
-                        <p>{rank}</p>
+                        <p className="text-capitalize">{rank === 'none' ? 'Chưa có' : rank}</p>
 
                     </div>
                 </div> {/*  end card-body  */}

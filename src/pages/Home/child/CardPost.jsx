@@ -10,7 +10,7 @@ function CardPost({ data, facebookId }) {
     return (
         <div className="card mb-0 mt-2 ribbon-box">
             <div className="card-body">
-                <div className={`ribbon-two color-rank-${data.rank}`}><span>{data.rank}</span></div>
+                <div className={`ribbon-two color-rank-${data.rank}`}><span className="text-capitalize">{data.rank}</span></div>
                 <div className="media mb-3 mt-1">
                     <img className="d-flex mr-2 rounded-circle" src={`${process.env.REACT_APP_UPLOAD_URL}/${data.user.avatar}`} alt="placeholder image" height="32" />
                     <div className="media-body">

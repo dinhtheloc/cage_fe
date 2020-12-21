@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UpdateInfoUser from './child/UpdateInfoUser';
 import UploadAvatarUI from './child/UploadAvatarUI';
-
+import Breadcrumb from '../../components/Breadcrumb';
 
 export default function ProfilePage({ userProfile, fetchUserProfile }) {
 
@@ -17,15 +17,9 @@ export default function ProfilePage({ userProfile, fetchUserProfile }) {
         <>
             <div className="row">
                 <div className="col-12">
-                    <div className="page-title-box">
-                        <div className="page-title-right">
-                            <ol className="breadcrumb m-0">
-                                <li className="breadcrumb-item"><a href="#">Tìm kiếm đồng đội</a></li>
-                                <li className="breadcrumb-item active">Hồ sơ cá nhân</li>
-                            </ol>
-                        </div>
-                        <h4 className="page-title">Hồ sơ cá nhân</h4>
-                    </div>
+                    <Breadcrumb 
+                    title={'Hồ sơ cá nhân'}
+                    ></Breadcrumb>
                 </div>
             </div>
 
@@ -43,7 +37,7 @@ export default function ProfilePage({ userProfile, fetchUserProfile }) {
                                     <p className="font-13 mb-0 text-white-50">Valorant id: #{userProfile.valorant_id}</p>
                                     <p className="font-13 mb-0 text-white-50">Valorant name: {userProfile.valorant_name}</p>
                                     <p className="font-13 mb-0 text-white-50">Rank: {userProfile.rank}</p>
-                                    <p className="font-13 mb-0 text-white-50">Giới tính: {userProfile.gender}</p>
+                                    <p className="font-13 mb-0 text-white-50">Giới tính: {userProfile.gender === 'male' ? 'Nam' : userProfile.gender === 'female' ? 'Nữ' : ''}</p>
                                 </div>
                             </div>
                         </div> {/* end col */}

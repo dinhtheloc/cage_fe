@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
+import Breadcrumb from '../../components/Breadcrumb';
 
 import { joinRoom, getDataRoom, receiveMessages, sendMessageRoom } from '../../api/socket';
 
@@ -54,7 +55,7 @@ export default function Chat({ userProfile }) {
         <>
             <div className="row">
                 <div className="col-12">
-                    <div className="page-title-box">
+                    {/* <div className="page-title-box">
                         <div className="page-title-right">
                             <ol className="breadcrumb m-0">
                                 <li className="breadcrumb-item"><a href="#">Tìm kiếm đồng đội</a></li>
@@ -62,7 +63,11 @@ export default function Chat({ userProfile }) {
                             </ol>
                         </div>
                         <h4 className="page-title">Hội thoại</h4>
-                    </div>
+                    </div> */}
+
+                    <Breadcrumb 
+                    title={'Hội thoại'}
+                    ></Breadcrumb>
                 </div>
             </div>
 
