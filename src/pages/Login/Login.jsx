@@ -24,7 +24,7 @@ export default function Login() {
                         <p class="text-muted mb-4">Chỉ với tài khoản facebook là bạn đã có thể đăng nhập vào hệ thống rồi.</p>
 
                         <div class="form-group mb-0 text-center">
-                            <a class="btn btn-primary btn-block" href="http://localhost:8080/auth/facebook"><i class="mdi mdi-login"></i> Đăng nhập bằng facebook </a>
+                            <a class="btn btn-primary btn-block" href={`${process.env.REACT_APP_BASE_HREF}auth/facebook`}><i class="mdi mdi-login"></i> Đăng nhập bằng facebook </a>
                         </div>
 
 
