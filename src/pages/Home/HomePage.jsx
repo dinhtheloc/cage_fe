@@ -38,7 +38,10 @@ export default function HomePage({ userProfile }) {
             pageSize,
             rankFilter
         }
-        setIsLoading(true);
+
+        if (!isFirstTime) {
+            setIsLoading(true);
+        }
 
         try {
             const { count, pageIndex, posts, totalPages } = await postApi.getAll(req);
@@ -50,8 +53,8 @@ export default function HomePage({ userProfile }) {
                 setIsFirstTime(false);
             } else {
                 window.$.NotificationApp.send("Yeah", "Tải mới bản tin thành công", "top-right", "rgba(0,0,0,0.2)", "success");
+                setTimeout(() => setIsLoading(false), 3000);
             }
-            setTimeout(() => setIsLoading(false), 3000);
         } catch (error) {
             console.log('error', error);
         }

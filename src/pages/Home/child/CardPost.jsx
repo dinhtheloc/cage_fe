@@ -19,8 +19,12 @@ function CardPost({ data, facebookId }) {
                             <br></br>
                             {timeSince(data.createDate)}
                         </small>
-                        <h6 className="m-0 font-14">{data.user.name} <i className={`mdi mdi-gender-${data.user.gender}`}></i></h6>
-                        <small className="text-muted">{data.user.valorant_name} <br></br>#{data.user.valorant_id}</small>
+                        <h6 className="m-0 font-14 text-truncate">{data.user.name} <i className={`mdi mdi-gender-${data.user.gender}`}></i></h6>
+                        {/* <p className="m-0 text-muted text-truncate">{data.user.name} <i className={`mdi mdi-gender-${data.user.gender}`}></i></p> */}
+                        {/* <p className="m-0 text-muted text-truncate">{data.user.name} <i className={`mdi mdi-gender-${data.user.gender}`}></i></p> */}
+                        {/* <small className="text-muted m-0 text-truncate">{data.user.valorant_name} <br></br>#{data.user.valorant_id}</small> */}
+                        <p className="text-muted m-0 text-truncate">{data.user.valorant_name}</p>
+                        <p className="text-muted m-0 text-truncate">#{data.user.valorant_id}</p>
                     </div>
                 </div>
 
