@@ -70,7 +70,7 @@ export default function HomePage({ userProfile }) {
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between mb-3">
+            <div className="d-flex justify-content-between mb-3">
                 <div>
 
                     <div
@@ -107,8 +107,8 @@ export default function HomePage({ userProfile }) {
                     {!isLoading ? <button
                         type="button"
                         onClick={() => { search(); }}
-                        class="btn btn-primary"><i className="uil-sync"></i> Làm mới bản tin</button> : <button class="btn btn-primary" type="button" disabled>
-                            <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
+                        className="btn btn-primary"><i className="uil-sync"></i> Làm mới bản tin</button> : <button className="btn btn-primary" type="button" disabled>
+                            <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
                         Loading...
                     </button>}
 
@@ -131,16 +131,24 @@ export default function HomePage({ userProfile }) {
 
             <div className="row">
                 {
-                    posts.map(i => {
+                    posts && posts.length > 0 ? posts.map(i => {
                         return (
                             <div key={i['_id']} className="col-sm-12 col-md-4">
                                 <CardPost
                                     facebookId={userProfile.facebook_id}
                                     data={i}></CardPost>
                             </div>)
-                    })
+                    }) :
+                        <div className="col-12">
+                            <div className="alert alert-info" role="alert">
+                                <h4 className="alert-heading">Hmmmm!</h4>
+                                <p>Hiện tại ngày hôm nay chưa có ai tạo bài viết. Bạn hãy là người đầu tiên tạo đi nào! <a href="#" data-toggle="modal" data-target="#staticBackdrop"> Click vào đây </a> để tạo nhé!</p>
+                            </div>
+                        </div>
                 }
             </div>
+
+
 
             <div className={'text-right mt-4'}>
                 <Pagination count={count}

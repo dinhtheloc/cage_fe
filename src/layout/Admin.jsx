@@ -57,7 +57,7 @@ export default function Admin() {
                         <div className="row">
                             {userProfile && !userProfile.valorant_id && !userProfile.valorant_name ? 
                             <div className="col-12 mt-4">
-                                <div class="alert alert-primary" role="alert">
+                                <div className="alert alert-primary" role="alert">
                                     <strong>Xin chào người mới.</strong> Thông tin cá nhân của bạn đang bỏ trống kìa! <Link to="/profile">Click vào đây</Link> để cập nhật hồ sơ cá nhân.
                                 </div>
                             </div> : ''}

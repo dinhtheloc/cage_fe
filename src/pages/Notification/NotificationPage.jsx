@@ -35,7 +35,7 @@ export default function NotificationPage({ notificationsData, userProfile }) {
                                 <div className="text-center p-4">
                                     <img src="/assets/images/startman.svg" height="120" alt="File not found Image"></img>
                                     <h4 className="text-uppercase text-danger mt-3">Hiện tại bạn chưa có thông báo</h4>
-                                    <p class="text-muted mt-3">Hãy tạo bài viết và tiến hành kết bạn đi nào!</p>
+                                    <p className="text-muted mt-3">Hãy tạo bài viết và tiến hành kết bạn đi nào!</p>
                                 </div>
                             }
                         </div> {/*  end card-body*/}
