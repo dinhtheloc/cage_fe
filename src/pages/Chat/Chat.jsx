@@ -6,10 +6,10 @@ import Input from './Input';
 import Messages from './Messages';
 import Breadcrumb from '../../components/Breadcrumb';
 
-import { joinRoom, getDataRoom, receiveMessages, sendMessageRoom } from '../../api/socket';
-
-export default function Chat({ userProfile }) {
+export default function Chat({ userProfile, socketio }) {
+    
     const { facebookId } = useParams();
+    const [socket, setSocketio] = useState(socketio);
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
@@ -17,24 +17,24 @@ export default function Chat({ userProfile }) {
     const history = useHistory();
 
     useEffect(() => {
+        console.log('socketio', socketio);
         const arrayUserIds = [userProfile.facebook_id, facebookId];
         if (userProfile.facebook_id === facebookId) {
             history.push("/");
             return;
         }
-        joinRoom(arrayUserIds);
-    }, []);
+        socket.joinRoom(arrayUserIds);
 
-    useEffect(() => {
-        getDataRoom(({ messages, roomId, user }) => {
+        socket.getDataRoom(({ messages, roomId, user }) => {
             setRoom(roomId);
             setMessages(messages);
             setReceiver(user);
         });
 
-        receiveMessages((messageRoom) => {
+        socket.receiveMessages((messageRoom) => {
             setMessages(messages => [...messages, messageRoom]);
         });
+        
     }, []);
 
     const sendMessage = (event) => {
@@ -46,7 +46,7 @@ export default function Chat({ userProfile }) {
                 roomId: room,
                 user: { ...userProfile }
             }
-            sendMessageRoom(data);
+            socket.sendMessageRoom(data);
             setMessage('');
         }
     }
@@ -55,18 +55,8 @@ export default function Chat({ userProfile }) {
         <>
             <div className="row">
                 <div className="col-12">
-                    {/* <div className="page-title-box">
-                        <div className="page-title-right">
-                            <ol className="breadcrumb m-0">
-                                <li className="breadcrumb-item"><a href="#">Tìm kiếm đồng đội</a></li>
-                                <li className="breadcrumb-item active">Hội thoại</li>
-                            </ol>
-                        </div>
-                        <h4 className="page-title">Hội thoại</h4>
-                    </div> */}
-
-                    <Breadcrumb 
-                    title={'Hội thoại'}
+                    <Breadcrumb
+                        title={'Hội thoại'}
                     ></Breadcrumb>
                 </div>
             </div>

@@ -133,7 +133,7 @@ export default function HomePage({ userProfile }) {
                 {
                     posts && posts.length > 0 ? posts.map(i => {
                         return (
-                            <div key={i['_id']} className="col-sm-12 col-md-4">
+                            <div key={i['_id']} className="col-sm-12 col-md-6">
                                 <CardPost
                                     facebookId={userProfile.facebook_id}
                                     data={i}></CardPost>

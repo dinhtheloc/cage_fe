@@ -19,8 +19,8 @@ export default function Input({ setMessage, sendMessage, message }) {
                             </div>
                             <div className="col-sm-auto">
                                 <div className="btn-group">
-                                    <a href="#" className="btn btn-light"><i className="uil uil-paperclip"></i></a>
-                                    <a href="#" className="btn btn-light"> <i className='uil uil-smile'></i> </a>
+                                    {/* <a href="#" className="btn btn-light"><i className="uil uil-paperclip"></i></a> */}
+                                    {/* <a href="#" className="btn btn-light"> <i className='uil uil-smile'></i> </a> */}
                                     <button className="btn btn-success chat-send btn-block"
                                         onClick={e => sendMessage(e)}
                                     ><i className='uil uil-message'></i>
