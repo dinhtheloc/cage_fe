@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function ListUser({ listUserOnline, numClients }) {
-    console.log(listUserOnline);
     return (
         <div className="card">
             <div className="card-body">
@@ -27,9 +26,7 @@ export default function ListUser({ listUserOnline, numClients }) {
                         </div>
                     </div>
                 )}
-
             </div>
-            {/*  end card-body */}
         </div>
     )
 }
